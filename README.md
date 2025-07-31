@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🛍️ AI Product Recommender
 
-First, run the development server:
+This is a demo project developed for a hackathon.  
+It recommends **real products** based on user preferences, budget, and reviews — powered by Gemini LLM.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 🎛️ Dynamic filter panel for product attributes
+- 💬 AI chat interface for personalized recommendations
+- 🌐 **Real product links** (not mock data!)
+- 🧠 LLM-generated summaries from real user reviews
+- 📊 Consideration of ratings, comments, and budget
+- ⚙️ Product data scraped from sources like Trendyol & Hepsiburada
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📦 Data & Scraping
 
-To learn more about Next.js, take a look at the following resources:
+- Product and review data is scraped from public e-commerce pages (e.g. Trendyol, Hepsiburada).
+- The data is used **only for demonstration purposes** and is stored in local `.json` files under `/data/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚠️ Disclaimer
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is **non-commercial** and built only for educational and demo use.  
+All product data is gathered from publicly available pages.  
+No affiliation with any e-commerce platform is claimed.
