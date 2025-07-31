@@ -1,0 +1,73 @@
+.heroSection {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--text-dark);
+}
+
+.heroTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+    .heroTitle {
+        font-size: 3rem;
+    }
+}
+
+.heroSubtitle {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+    .heroSubtitle {
+        font-size: 1.125rem;
+    }
+}
+
+.heroInputContainer {
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.heroInput {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+}
+
+.heroButton {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+}
+
+.heroButton:hover {
+    background-color: var(--primary-hover);
+}
+
+.sendIcon {
+    font-size: 1.5rem;
+}
