@@ -3,64 +3,38 @@ import styles from "./ProductList.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 
 const dummyProducts = [
-    {
-        imageUrl: "/indir.png",
-        title: "Premium Wireless Headphones",
-        price: "$299.99",
-        rating: 4,
-        reviewCount: 1232,
-        description: "Why we recommend this",
-        features: [
-            "Very comfortable fit",
-            "Long battery life",
-            "Noise cancelling",
-            "Works with any device"
-        ],
-        reviewSummary: [
-            "Excellent sound quality",
-            "Battery lasts over 24h",
-            "Very lightweight and comfy"
-        ]
-    },
-    {
-        imageUrl: "/indir.png",
-        title: "Smart Watch Series 5",
-        price: "$399.99",
-        rating: 5,
-        reviewCount: 2764,
-        description: "Why we recommend this",
-        features: [
-            "Step & heart rate tracking",
-            "Water resistant",
-            "Long battery life",
-            "Minimal design"
-        ],
-        reviewSummary: [
-            "Tracks steps very accurately",
-            "Elegant and comfortable",
-            "Sleep tracking is helpful"
-        ]
-    },
-    {
-        imageUrl: "/indir.png",
-        title: "Professional Camera Lens",
-        price: "$899.99",
-        rating: 4,
-        reviewCount: 984,
-        description: "Why we recommend this",
-        features: [
-            "High resolution zoom",
-            "Great for portraits",
-            "Perfect sharpness",
-            "Try now & return"
-        ],
-        reviewSummary: [
-            "Great value for professionals",
-            "Sharp focus and depth",
-            "Amazing build quality"
-        ]
-    }
-];
+        {
+            imageUrl: "/indir.png",
+            title: "Premium Wireless Headphones",
+            price: "$299.99",
+            rating: 4,
+            reviewCount: 1232,
+            features: `30 saatlik pil ömrü, aktif gürültü engelleme ve Bluetooth 5.0 ile yüksek ses kalitesi sunar.`,
+            description: `AI analizine göre bu kulaklık uzun süreli kullanımda konforu ve izolasyonu ile öne çıkıyor.`,
+            reviewSummary: `Kullanıcılar özellikle ses netliği ve rahat yapısından memnun.`
+        },
+        {
+            imageUrl: "/indir.png",
+            title: "Smart Watch Series 5",
+            price: "$399.99",
+            rating: 5,
+            reviewCount: 2764,
+            features: `Kalp atışı ve uyku takibi, su geçirmez gövde ve 7 günlük pil süresiyle donatılmıştır.`,
+            description: `Düzenli egzersiz yapanlar için önerilen, şık ve işlevsel bir akıllı saat.`,
+            reviewSummary: `Stil, sağlık verisi doğruluğu ve pil ömrü en çok beğenilen yönleri.`
+        },
+        {
+            imageUrl: "/indir.png",
+            title: "Professional Camera Lens",
+            price: "$899.99",
+            rating: 4,
+            reviewCount: 984,
+            features: `Portre ve manzara çekimleri için ideal; net odak ve düşük ışıkta yüksek performans.`,
+            description: `AI değerlendirmesine göre bu lens keskinlik ve kalite açısından fiyatının hakkını veriyor.`,
+            reviewSummary: `Odak kalitesi ve sağlam gövdesi sıkça övülüyor.`
+        }
+    ]
+;
 
 const ProductList: React.FC = () => {
     return (

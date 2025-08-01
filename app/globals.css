@@ -1,16 +1,21 @@
 :root {
-  --gradient-start: #e0f7fa;
-  --gradient-middle: #c8e6f4;
-  --gradient-end: #fdfdfd;
-  --text-dark: #222;
-  --primary-color: #2c90e8;
-  --primary-hover: #1b77c5;
+  --bg-color: #f9fafb;
+  --card-bg: #ffffff;
+  --text-color: #111827;
+  --subtext-color: #6b7280;
+  --primary-color: #2563eb;     /* Blue-600 */
+  --primary-hover: #1d4ed8;     /* Blue-700 */
+  --border-color: #e5e7eb;      /* Gray-200 */
+  --star-color: #facc15;        /* Amber-400 */
 }
 
 body {
   margin: 0;
-  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
+
 
 .app-container {
   min-height: 100vh;

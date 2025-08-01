@@ -9,8 +9,8 @@ interface ProductCardProps {
     rating: number;
     reviewCount: number;
     description: string;
-    features: string[];
-    reviewSummary: string[]; // 🆕 Yeni alan
+    features: string;
+    reviewSummary: string;
     onClick?: () => void;
 }
 
@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                         <FaStar
                             key={i}
                             size={14}
-                            color={i < rating ? "#facc15" : "#e5e7eb"}
+                            color={i < rating ? "var(--primary-color)" : "#e5e7eb"}
                         />
                     ))}
                     <span className={styles.reviewText}>
@@ -46,24 +46,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 </div>
 
                 <p className={styles.price}>{price}</p>
-                <button className={styles.shopButton}>Shop Now</button>
+                <button className={styles.shopButton}>Satın Al</button>
                 <p className={styles.description}>{description}</p>
 
                 <div className={styles.box}>
-                    <ul className={styles.featureList}>
-                        {features.slice(0, 3).map((f, i) => (
-                            <li key={i} className={styles.featureItem}>{f}</li>
-                        ))}
-                    </ul>
+                    <p className={styles.paragraph}>{features}</p>
                 </div>
 
                 <div className={styles.box}>
-                    <ul className={styles.reviewSummary}>
-                        {reviewSummary.slice(0, 3).map((r, i) => (
-                            <li key={i} className={styles.reviewItem}>{r}</li>
-                        ))}
-                    </ul>
+                    <p className={styles.paragraph}>{reviewSummary}</p>
                 </div>
+
 
 
             </div>
