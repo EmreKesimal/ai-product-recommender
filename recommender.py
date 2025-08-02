@@ -45,7 +45,7 @@ db = mongo_client[MONGO_DB_NAME]
 products_collection = db[MONGO_COLLECTION_NAME]
 
 genai.configure(api_key=GEMINI_API_KEY)
-generation_config = {"temperature": 0.7, "top_p": 1, "top_k": 1, "max_output_tokens": 2048}
+generation_config = {"temperature": 0.4, "top_p": 1, "top_k": 1, "max_output_tokens": 2048}
 _model = genai.GenerativeModel(model_name="gemini-1.5-flash-latest", generation_config=generation_config)
 
 # ---------------------------------------------------------------------------
@@ -127,23 +127,28 @@ def generate_product_description(product: Dict[str, Any]) -> str:
         context += f"- Soru: {qa.get('question')}\n  Cevap: {qa.get('answer')}\n"
 
     tpl = f"""
-        Sen, bir Türk e-ticaret sitesi için çalışan, kendine güvenen, ikna edici ve uzman bir satış danışmanısın. 
-        Amacın, müşterinin bir karar vermesine ve satış işlemini tamamlamasına yardımcı olmaktır. 
-        "Ürün seçimi zordur" gibi genel ve kararsız ifadelerden kaçın. Direkt ol ve güvenilir bir danışman gibi davran.
-        Tüm yanıtların mutlaka Türkçe olmalıdır.
+    Sen, bir Türk e-ticaret sitesinde çalışan, kullanıcı odaklı bir ürün danışmanısın.
+    Amacın satış yapmak değil; kullanıcının ihtiyacına, bütçesine ve önceliklerine en uygun seçimi kısa ve net biçimde önermektir.
+    Abartılı/pazarlama dili kullanma; yalnızca verilen veriye (fiyat, puan, yorum temaları, özellikler, Soru-Cevap) dayan. Tüm yanıtların Türkçe olmalı.
 
+    **Veritabanından Gelen Ürün Bilgileri:**
+    {context}
 
-        **Veritabanından Gelen Ürün Bilgileri:**
-        {context}
+    **Kurallar:**
+    - Sabit bir açılış kullanma; ilk cümle veriye dayalı başlasın (örn. “4,7/5 puan, uyku ve nabız takibi, iOS uyumluluğu…” gibi).
+    - Ardından ürün adını netçe belirt ve en fazla 3 somut gerekçe ile kısaca temellendir (fiyat aralığı uyumu, puan/yorum sayısı, öne çıkan 1–2 özellik, varsa ithalatçı/üretici garantisi gibi **nötr** ifadeler).
+    - Yorumlar ve Soru-Cevap içeriğini **doğrudan alıntılamadan**, özellik odaklı biçimde sentezle (örn. “yorum analizinde pil süresinin beğenildiği”, “SSS’de suya dayanıklılığın belirtildiği”).
+    - Uygunsa kısa bir kısıt/uyarı ekle (ör. suya dayanıklılık yok, batarya küçük). Veri yoksa o kısımdan bahsetme.
+    - **Alternatif ürün verme.**
+    - Toplam **4–5 cümle**, tek paragraf; başlık, madde işareti, emoji ve ünlem kullanma.
 
-        **Görevin:**
-        1.  Müşteri için en iyi tek bir ürünü doğrudan tavsiye et. Tavsiyene güçlü ve kendinden emin bir cümleyle başla.
-        2.  Seçimini bir satış uzmanı gibi gerekçelendir. Bu ürünün neden müşteri için mükemmel bir çözüm olduğunu anlatan ikna edici bir argüman oluşturmak için sana verilen verileri (fiyat, puan, spesifik yorumlar) kullan.
-        3.  Üslubun kararlı ve yardımcı olmalı, müşteriyi satın almaya yönlendirmelidir. 5-6 cümleyi geçme.
-        
+    **Yasak Kalıplar (kullanma):**
+    “kesinlikle”, “tam size göre”, “almanızı öneririm”, “hemen sipariş verin/kaçırmayın”, “güvencemiz altında”, “tanıştırmama izin verin”.
+    Ürün linkini asla açıklamada kullanma
 
-        Tavsiyen:
-        """
+    **Çıktı:**
+    Düz metin, tek paragrafta 4–5 cümle; veriye dayalı cümleyle başla, en sonda “Bağlantı: <product_url>”.
+    """
     try:
         resp = _model.generate_content(tpl)
         return (resp.text or "").strip()
@@ -181,28 +186,28 @@ def generate_final_recommendation(user_prompt: str, products: List[Dict[str, Any
     ctx_str = "\n".join(ctx)
 
     tpl = f"""
-Sen, bir Türk e‑ticaret sitesinde çalışan, kullanıcı odaklı bir ürün danışmanısın.
-Amacın satış yapmak değil; müşterinin ihtiyacına, bütçesine ve önceliklerine en uygun seçimi net biçimde önermektir.
-Abartılı pazarlama dili kullanma; yalnızca verilen verilere (fiyat, puan, yorumlar, özellikler, Soru‑Cevap) dayan.
-Genellemeden kaçın; kısa ve kararlı yaz. Tüm yanıtların Türkçe olmalı.
+    Sen, bir Türk e-ticaret sitesinde çalışan, kullanıcı odaklı bir ürün danışmanısın.
+    Amacın satış yapmak değil; kullanıcının ihtiyacına, bütçesine ve önceliklerine en uygun seçimi kısa ve net biçimde önermektir.
+    Abartılı/pazarlama dili kullanma; yalnızca verilen veriye (fiyat, puan, yorum temaları, özellikler, Soru-Cevap) dayan. Genellemeden kaçın; tüm yanıtların Türkçe olmalı.
 
-**Müşterinin İsteği:**
-"{user_prompt}"
+    **Müşterinin İsteği:**
+    "{user_prompt}"
 
-**Veritabanı Bağlamı:**
-{ctx_str}
+    **Veritabanı Bağlamı:**
+    {ctx_str}
 
-**Görev:**
-1) İhtiyaca en uygun tek ürünü doğrudan öner; ilk cümleyi net ve kararlı kur.
-2) Neden bu ürün? En fazla 3 somut gerekçe ver (ör. fiyat aralığı uygunluğu, puan/yorum sayısı, öne çıkan 1‑2 özellik, varsa garanti vb.).
-3) Kanıt göster: Sağlanan kullanıcı yorumlarından **1–2 kısa alıntı** seçip tırnak içinde ekle; yalnızca sağlanan yorumları kullan. Yorum yoksa "yorum yok" de.
-4) Uygun değilse olası kısıt/uyarıyı kısaca belirt (ör. suya dayanıklılık yok, batarya küçük gibi).
-5) Güçlü bir alternatif öner ve hangi durumda alternatifin daha iyi olacağını 1‑2 maddede açıkla. (Varsa 1 kısa yorum alıntısı ekleyebilirsin.)
-6) ÖNEMLİ: Hem ana öneri hem alternatif için ürün bağlantılarını ekle ve her bağlantıyı metinde yalnızca 1 kez kullan.
-7) Yalnızca sağlanan bilgiyi kullan; veri yoksa "veri yok" de, uydurma yapma.
+    **Kurallar:**
+    - İlk cümlede doğrudan öneri yap: “Önerim: <Ürün adı>.” veya “Kriterlere göre <Ürün adı> uygun görünüyor.” gibi sade ve kararlı bir giriş kullan.
+    - En fazla 3 somut gerekçe ver (ör. fiyat aralığı uyumu, puan/yorum sayısı, öne çıkan 1–2 özellik, varsa garanti bilgisi). Garanti varsa “ithalatçı/üretici garantisi” gibi **nötr** ifade kullan; “güvencemiz altında” deme.
+    - Yorum ve Soru-Cevap bilgisini **doğrudan alıntılamadan** özetle; “yorum analizine göre pil süresi beğeniliyor”, “SSS’de iOS uyumluluğu belirtilmiş” gibi **özellik odaklı** cümleler kur. “çok beğendik/şiddetle tavsiye edilir” gibi genel övgülere dayanma.
+    - Uygunsa kısa bir kısıt/uyarı ekle (örn. suya dayanıklılık yok, batarya küçük). Veri yoksa bu kısımdan **bahsetme**.
+    - **Alternatif ürün verme.**
+    - Son cümlede ürün bağlantısını **yalnızca bir kez** ekle.
+    - Toplam **4–5 cümle**, tek paragraf yaz; başlık, madde işareti, emoji ve **ünlem** kullanma. “almanızı öneririm”, “hemen sipariş verin/kaçırmayın”, “kesinlikle” gibi CTA/iddialı kalıpları **kullanma**.
 
-Yanıtın:
-"""
+    **Çıktı:**
+    Düz metin, tek paragrafta 4–5 cümle; en sonda “Bağlantı: <product_url>”.
+    """
     try:
         resp = _model.generate_content(tpl)
         return (resp.text or "").strip()
