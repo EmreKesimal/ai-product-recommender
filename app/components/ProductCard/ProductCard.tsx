@@ -9,8 +9,6 @@ interface ProductCardProps {
     rating: number;
     reviewCount: number;
     description: string;
-    features: string;
-    reviewSummary: string;
     onClick?: () => void;
 }
 
@@ -21,15 +19,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                                      rating,
                                                      reviewCount,
                                                      description,
-                                                     features,
-                                                     reviewSummary,
                                                      onClick,
                                                  }) => {
     return (
         <div className={styles.card}>
             <img src={imageUrl} alt={title} className={styles.image} />
 
-            <div className={styles.cardContent}>
+            <div>
                 <h3 className={styles.title}>{title}</h3>
 
                 <div className={styles.rating}>
@@ -47,14 +43,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
                 <p className={styles.price}>{price}</p>
                 <button className={styles.shopButton}>Satın Al</button>
-                <p className={styles.description}>{description}</p>
 
                 <div className={styles.box}>
-                    <p className={styles.paragraph}>{features}</p>
-                </div>
-
-                <div className={styles.box}>
-                    <p className={styles.paragraph}>{reviewSummary}</p>
+                    <p className={styles.paragraph}>{description}</p>
                 </div>
 
 

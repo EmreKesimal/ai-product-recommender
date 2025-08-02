@@ -1,11 +1,9 @@
-import HeroSection from "./components/HeroSection/HeroSection";
-import ProductList from "@/app/components/ProductList/ProductList";
+import ProductRecommender from "@/app/components/ProductRecommender/ProductRecommender";
 
 export default function Home() {
   return (
       <main>
-        <HeroSection />
-          <ProductList></ProductList>
+        <ProductRecommender></ProductRecommender>
       </main>
   );
 }
