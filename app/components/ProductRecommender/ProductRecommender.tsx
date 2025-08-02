@@ -35,7 +35,7 @@ const ProductRecommender = () => {
             setLoading(true);
             try {
                 const res = await axios.post('http://localhost:5001/recommendation', {
-                    query
+                    prompt: query
                 });
                 setProducts(res.data.cards || []);
             } catch (err) {
