@@ -7,7 +7,7 @@ interface ProductCardProps {
     title: string;
     price: string;
     rating: number;
-    reviewCount: number;
+    ratingCount: number;
     description: string;
     onClick?: () => void;
 }
@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                                      title,
                                                      price,
                                                      rating,
-                                                     reviewCount,
+                                                     rating_count,
                                                      description,
                                                      onClick,
                                                  }) => {
@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                         />
                     ))}
                     <span className={styles.reviewText}>
-        ({Number(reviewCount).toLocaleString()} reviews)
+        ({Number(rating_count).toLocaleString()} ratings)
       </span>
                 </div>
 

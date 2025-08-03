@@ -10,7 +10,7 @@ interface Product {
     title: string;
     price: number;
     rating: number;
-    review_count: number;
+    rating_count: number;
     description: string;
     image: string | null;
     link: string;
@@ -98,7 +98,7 @@ const ProductRecommender = () => {
                         title={product.title}
                         price={`${product.price.toLocaleString('tr-TR')} TL`}
                         rating={product.rating}
-                        reviewCount={product.review_count}
+                        rating_count={product.rating_count}
                         description={product.description}
                     />
                 ))}

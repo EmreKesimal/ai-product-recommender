@@ -219,11 +219,25 @@ def to_card(prod: Dict[str, Any]) -> Dict[str, Any]:
     """Flatten product to frontend-ready 'card'."""
     images = prod.get("images") or []
     reviews = prod.get("reviews") or []
+
+    # Counts
+    review_count = len(reviews) if isinstance(reviews, list) else 0
+    # Support both snake_case and camelCase just in case
+    rating_count_raw = prod.get("rating_count", prod.get("rating_count", 0))
+
+    try:
+        rating_count_val = int(rating_count_raw) if rating_count_raw is not None else 0
+    except (TypeError, ValueError):
+        rating_count_val = 0
+
+    # Fallback: if database rating_count is 0 or missing, use review_count
+    effective_count = rating_count_val if rating_count_val > 0 else review_count
+
     return {
         "image": images[0] if images else None,
         "title": prod.get("title"),
         "rating": prod.get("rating", 0),
-        "review_count": len(reviews) if isinstance(reviews, list) else 0,
+        "rating_count": effective_count,
         "price": (prod.get("price") or {}).get("current"),
         "link": (prod.get("product_url") or prod.get("productUrl")),
         "description": generate_product_description(prod),
