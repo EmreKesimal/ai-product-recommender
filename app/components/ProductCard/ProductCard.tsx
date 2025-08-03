@@ -7,7 +7,7 @@ interface ProductCardProps {
     title: string;
     price: string;
     rating: number;
-    ratingCount: number;
+    rating_count: number;
     description: string;
     onClick?: () => void;
 }
