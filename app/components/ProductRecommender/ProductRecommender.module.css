@@ -1,7 +1,19 @@
-.heroSection {
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 0 1rem;
     text-align: center;
-    padding: 1rem 1rem;
-    color: var(--text-dark);
+    transition: all 0.6s ease;
+}
+
+.shifted {
+    justify-content: flex-start;
+    padding-top: 4rem;
+    min-height: unset;
+    transform: translateY(-60px);
 }
 
 .heroTitle {
@@ -9,11 +21,18 @@
     font-weight: bold;
     margin-bottom: 1rem;
 }
-
 @media (min-width: 640px) {
     .heroTitle {
         font-size: 3rem;
     }
+}
+.heroSubtitle {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 500;
 }
 
 .heroInputContainer {
@@ -60,31 +79,30 @@
     font-size: 1.5rem;
 }
 
-.filterBar {
+.loading {
+    margin-top: 2rem;
+    font-weight: 500;
+    color: #4a4a4a;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.filterSelect {
-    appearance: none;
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    padding: 0.6rem 1rem;
-    font-size: 0.95rem;
-    color: #374151;
-    min-width: 180px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-    transition: border-color 0.2s ease;
+.spinner {
+    margin-top: 1rem;
+    width: 48px;
+    height: 48px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
 }
 
-.filterSelect:focus {
-    outline: none;
-    border-color: #2563eb;
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .grid {
@@ -94,10 +112,15 @@
     padding: 0;
     margin-top: 25px;
     gap: 2.5rem;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
-.loading {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-    color: #4b5563;
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
