@@ -3,10 +3,14 @@
   --card-bg: #ffffff;
   --text-color: #111827;
   --subtext-color: #6b7280;
-  --primary-color: #2563eb;     /* Blue-600 */
-  --primary-hover: #1d4ed8;     /* Blue-700 */
-  --border-color: #e5e7eb;      /* Gray-200 */
-  --star-color: #facc15;        /* Amber-400 */
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --border-color: #e5e7eb;
+  --star-color: #fde047;
+
+  --gradient-start: #93c5fd;
+  --gradient-middle: #dbeafe;
+  --gradient-end: #ffffff;
 }
 
 body {
@@ -14,13 +18,18 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
+  transition: background 0.5s ease, color 0.5s ease;
 }
-
 
 .app-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
   background-repeat: no-repeat;
   background-size: cover;
   transition: background 0.8s ease;
+  padding: 2rem;
 }

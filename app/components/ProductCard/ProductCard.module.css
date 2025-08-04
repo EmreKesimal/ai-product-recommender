@@ -9,6 +9,7 @@
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     display: flex;
     flex-direction: column;
+    animation: fadeInUp 0.5s ease both;
 }
 
 .card:hover {
@@ -32,6 +33,7 @@
 .rating {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 0.9rem;
     color: var(--subtext-color);
     gap: 4px;
@@ -101,4 +103,14 @@
     line-height: 1.6;
     margin: 0;
     white-space: pre-line;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -50,30 +50,12 @@ const ProductRecommender = () => {
     }, [query]);
 
     return (
-        <section className={styles.heroSection}>
-            <h1 className={styles.heroTitle}>Yapay Zekâ ile Sana Uygun Ürünü Bul!</h1>
-
-            <div className={styles.filterBar}>
-                <select className={styles.filterSelect}>
-                    <option>Kategori</option>
-                    <option>Kulaklık</option>
-                    <option>Akıllı Saat</option>
-                    <option>Kamera</option>
-                </select>
-
-                <select className={styles.filterSelect}>
-                    <option>Değerlendirme</option>
-                    <option>4+ yıldız</option>
-                    <option>3+ yıldız</option>
-                </select>
-
-                <select className={styles.filterSelect}>
-                    <option>Bütçe Aralığı</option>
-                    <option>$0–$100</option>
-                    <option>$100–$300</option>
-                    <option>$300+</option>
-                </select>
-            </div>
+        <section className={`${styles.container} ${products.length > 0 ? styles.shifted : ''}`}>
+            <h1 className={styles.heroTitle}>AkılAI ile Sana Uygun Ürünü Bul!</h1>
+            <p className={styles.heroSubtitle}>
+                Bu akıllı öneri sistemi, ihtiyaçlarını yapay zekâ ile analiz eder, ürünler için yapılmış yorumları inceler ve senin için en uygun ürünleri bulur. Ürün tarifini yazman yeterli!<br />
+                Şimdilik sadece teknoloji kategorisinde tavsiyeler verebilmekte.
+            </p>
 
             <div className={styles.heroInputContainer}>
                 <input
@@ -88,21 +70,28 @@ const ProductRecommender = () => {
                 </button>
             </div>
 
-            {loading && <div className={styles.loading}>Yükleniyor...</div>}
+            {loading && (
+                <div className={styles.loading}>
+                    <div>Yükleniyor...</div>
+                    <div className={styles.spinner}></div>
+                </div>
+            )}
 
-            <div className={styles.grid}>
-                {products.map((product, index) => (
-                    <ProductCard
-                        key={index}
-                        imageUrl={product.image ?? '/placeholder.png'}
-                        title={product.title}
-                        price={`${product.price.toLocaleString('tr-TR')} TL`}
-                        rating={product.rating}
-                        rating_count={product.rating_count}
-                        description={product.description}
-                    />
-                ))}
-            </div>
+            {products.length > 0 && (
+                <div className={styles.grid}>
+                    {products.map((product, index) => (
+                        <ProductCard
+                            key={index}
+                            imageUrl={product.image ?? '/placeholder.png'}
+                            title={product.title}
+                            price={`${product.price.toLocaleString('tr-TR')} TL`}
+                            rating={product.rating}
+                            rating_count={product.rating_count}
+                            description={product.description}
+                        />
+                    ))}
+                </div>
+            )}
         </section>
     );
 };
