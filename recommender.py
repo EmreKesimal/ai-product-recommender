@@ -141,6 +141,7 @@ def generate_product_description(product: Dict[str, Any]) -> str:
     - Uygunsa kısa bir kısıt/uyarı ekle (ör. suya dayanıklılık yok, batarya küçük). Veri yoksa o kısımdan bahsetme.
     - **Alternatif ürün verme.**
     - Toplam **4–5 cümle**, tek paragraf; başlık, madde işareti, emoji ve ünlem kullanma.
+    - Bilgisayar & Tablet tek bir kategori olduğu için kullanıcı isteği bilgisayar mı tablet mi doğru analiz edip ürün başlığını kontrol ederek doğru ürün önerdiğine emin ol.
 
     **Yasak Kalıplar (kullanma):**
     “kesinlikle”, “tam size göre”, “almanızı öneririm”, “hemen sipariş verin/kaçırmayın”, “güvencemiz altında”, “tanıştırmama izin verin”.
