@@ -5,6 +5,8 @@ import { HiPaperAirplane } from 'react-icons/hi2';
 import axios from 'axios';
 import styles from './ProductRecommender.module.css';
 import ProductCard from '../ProductCard/ProductCard';
+import { PropagateLoader } from 'react-spinners';
+
 
 interface Product {
     title: string;
@@ -64,6 +66,11 @@ const ProductRecommender = () => {
                     className={styles.heroInput}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleSend();
+                        }
+                    }}
                 />
                 <button className={styles.heroButton} onClick={handleSend}>
                     <HiPaperAirplane className={styles.sendIcon} />
@@ -72,10 +79,11 @@ const ProductRecommender = () => {
 
             {loading && (
                 <div className={styles.loading}>
-                    <div>Yükleniyor...</div>
-                    <div className={styles.spinner}></div>
+                    <div className={styles.loadingText}>Ürünler analiz ediliyor...</div>
+                    <PropagateLoader color="#3b82f6" size={15} />
                 </div>
             )}
+
 
             {products.length > 0 && (
                 <div className={styles.grid}>
