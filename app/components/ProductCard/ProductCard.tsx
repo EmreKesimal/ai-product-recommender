@@ -9,6 +9,7 @@ interface ProductCardProps {
     rating: number;
     rating_count: number;
     description: string;
+    link: string;
     onClick?: () => void;
 }
 
@@ -21,13 +22,14 @@ const renderStars = (rating: number) => {
             <div
                 key={i}
                 style={{
-                    width: '14px',
-                    height: '14px',
+                    width: '16px',
+                    height: '16px',
                     position: 'relative',
+                    display: 'inline-block',
                 }}
             >
                 <FaStar
-                    size={14}
+                    size={16}
                     style={{
                         color: '#e5e7eb',
                         position: 'absolute',
@@ -35,23 +37,28 @@ const renderStars = (rating: number) => {
                         left: 0,
                     }}
                 />
-                <FaStar
-                    size={14}
+                <div
                     style={{
-                        color: 'var(--primary-color)',
+                        width: `${filledPercentage}%`,
+                        overflow: 'hidden',
                         position: 'absolute',
                         top: 0,
                         left: 0,
-                        width: `${filledPercentage}%`,
-                        overflow: 'hidden',
+                        height: '100%',
                     }}
-                />
+                >
+                    <FaStar
+                        size={16}
+                        style={{
+                            color: 'var(--primary-color)',
+                        }}
+                    />
+                </div>
             </div>
         );
     }
     return stars;
 };
-
 
 const ProductCard: React.FC<ProductCardProps> = ({
                                                      imageUrl,
@@ -60,6 +67,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                                      rating,
                                                      rating_count,
                                                      description,
+                                                     link,
                                                      onClick,
                                                  }) => {
     return (
@@ -76,20 +84,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     </span>
                 </div>
 
-
-
                 <p className={styles.price}>{price}</p>
-                <button className={styles.shopButton}>Satın Al</button>
+
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                    <button className={styles.shopButton}>Satın Al</button>
+                </a>
 
                 <div className={styles.box}>
                     <p className={styles.paragraph}>{description}</p>
                 </div>
-
-
-
             </div>
         </div>
-
     );
 };
+
 export default ProductCard;

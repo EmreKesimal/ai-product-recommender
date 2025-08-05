@@ -96,6 +96,7 @@ const ProductRecommender = () => {
                             rating={product.rating}
                             rating_count={product.rating_count}
                             description={product.description}
+                            link={product.link}
                         />
                     ))}
                 </div>
