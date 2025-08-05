@@ -17,12 +17,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 import os
-import prompt_analyzer
-from utils import normalize_criteria
-from search import find_products_by_criteria
-from llm_filter import comprehensive_llm_filter
-from ranker import rank_products
-from description import to_card
+from services import prompt_analyzer
+from services.utils import normalize_criteria
+from services.search import find_products_by_criteria
+from filters.llm_filter import comprehensive_llm_filter
+from services.ranker import rank_products
+from formatting.description import to_card
 
 app = Flask(__name__)
 CORS(app)

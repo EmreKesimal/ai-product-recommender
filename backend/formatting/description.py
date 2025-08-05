@@ -17,11 +17,10 @@ This module provides two utility functions:
 
 from __future__ import annotations
 
-import json
 from typing import Any, Dict, Optional
 
 import config
-from utils import (
+from services.utils import (
     _get_effective_rating,
     _get_effective_review_count,
 )
@@ -91,6 +90,11 @@ Bu ürün hakkında doğal ve bilgilendirici açıklama yaz.
    • "Kullanıcılardan {rating}/5 değerlendirme alan..."
    • "{rating} yıldızlı..."
    • "{rating} puanla dikkat çeken..."
+   • "Ortalama {rating} yıldızla değerlendirilen..."
+   • "Kullanıcılardan aldığı {rating}/5 puan ile öne çıkan..."
+   • "{rating} yıldız alarak kullanıcıların beğenisini kazanan..."
+   • "{rating} puanı ile dikkat çeken..."
+   • "{rating} üzerinden değerlendirilen..."
 
 2. YORUMLARDAN ÇIKARIM YAP - Direkt alıntı yapma:
    ✅ "Kullanıcılar ses kalitesinden övgüyle bahsediyor"

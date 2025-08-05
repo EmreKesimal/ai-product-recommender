@@ -12,7 +12,7 @@ original monolithic implementation.
 from typing import Any, Dict, List, Tuple
 
 import config
-from smart_query import build_smart_query
+from filters.smart_query import build_smart_query
 
 __all__ = ["find_products_by_criteria"]
 

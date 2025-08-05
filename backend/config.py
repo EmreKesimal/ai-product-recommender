@@ -29,6 +29,8 @@ except ImportError:
 
 import google.generativeai as genai  # type: ignore
 from pymongo import MongoClient
+import certifi
+
 
 __all__ = [
     "MONGO_URI",
@@ -46,10 +48,7 @@ __all__ = [
 
 # MongoDB connection settings. Default values mirror those used in the
 # original monolithic recommender script.
-MONGO_URI: str = os.environ.get(
-    "MONGO_URI",
-    "mongodb+srv://scraper4253:yamandede403@cluster0.cv576qm.mongodb.net/scrapingdb?retryWrites=true&w=majority&appName=Cluster0",
-)
+MONGO_URI: str = os.environ["MONGO_URI"]
 MONGO_DB_NAME: str = os.environ.get("MONGO_DB_NAME", "scrapingdb")
 MONGO_COLLECTION_NAME: str = os.environ.get("MONGO_COLLECTION_NAME", "products")
 
@@ -59,7 +58,7 @@ GEMINI_API_KEY: str = os.environ.get("GEMINI_API_KEY", "")
 # Initialise the MongoDB client and collection handles. These are shared
 # across the application so that multiple requests reuse the same
 # underlying connection pool.
-mongo_client: MongoClient = MongoClient(MONGO_URI)
+mongo_client: MongoClient = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
 db = mongo_client[MONGO_DB_NAME]
 products_collection = db[MONGO_COLLECTION_NAME]
 

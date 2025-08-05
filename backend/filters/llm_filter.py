@@ -21,8 +21,8 @@ below with a direct implementation while keeping the public function name.
 # Import as a thin shim so existing imports keep working.
 # Supports both package and script execution contexts.
 try:
-    from .heuristic_filter import heuristic_filter_and_score as comprehensive_llm_filter
+    from filters.heuristic_filter import heuristic_filter_and_score as comprehensive_llm_filter
 except ImportError:
-    from heuristic_filter import heuristic_filter_and_score as comprehensive_llm_filter
+    from filters.heuristic_filter import heuristic_filter_and_score as comprehensive_llm_filter
 
 __all__ = ["comprehensive_llm_filter"]

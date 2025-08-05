@@ -12,7 +12,7 @@ preferences.
 """
 
 from typing import Any, Dict, Tuple
-from mappings import FEATURE_MAPPINGS, CATEGORY_PREFERENCES
+from formatting.mappings import FEATURE_MAPPINGS, CATEGORY_PREFERENCES
 
 __all__ = ["build_smart_query"]
 
