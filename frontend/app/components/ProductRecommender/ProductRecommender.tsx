@@ -36,7 +36,8 @@ const ProductRecommender = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const res = await axios.post('http://localhost:5001/recommendation', {
+                const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/recommendation`, {
+
                     prompt: query
                 });
                 setProducts(res.data.cards || []);

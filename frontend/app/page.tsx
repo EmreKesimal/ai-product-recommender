@@ -1,4 +1,5 @@
-import ProductRecommender from "@/frontend/app/components/ProductRecommender/ProductRecommender";
+import ProductRecommender from "@/app/components/ProductRecommender/ProductRecommender";
+
 
 export default function Home() {
   return (
