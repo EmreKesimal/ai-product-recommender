@@ -38,7 +38,7 @@ backend/.env
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+frontend/next-env.d.ts
 
 __pycache__/
 *.pyc
