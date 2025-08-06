@@ -89,7 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 <a href={link} target="_blank" rel="noopener noreferrer">
                     <button className={styles.shopButton}>Satın Al</button>
                 </a>
-
+                <p>AkılAI Önerisi</p>
                 <div className={styles.box}>
                     <p className={styles.paragraph}>{description}</p>
                 </div>

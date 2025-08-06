@@ -84,17 +84,12 @@ Bu ürün hakkında doğal ve bilgilendirici açıklama yaz.
 
 **Yazma Kuralları:**
 
-1. İLK CÜMLE - Rating ile başla ama her seferinde aşağıdakilerden rastgele birini kullan:
-   • "{rating}/5 yıldız alan..."
-   • "{rating} puan ortalamasına sahip..."  
-   • "Kullanıcılardan {rating}/5 değerlendirme alan..."
-   • "{rating} yıldızlı..."
-   • "{rating} puanla dikkat çeken..."
-   • "Ortalama {rating} yıldızla değerlendirilen..."
-   • "Kullanıcılardan aldığı {rating}/5 puan ile öne çıkan..."
-   • "{rating} yıldız alarak kullanıcıların beğenisini kazanan..."
-   • "{rating} puanı ile dikkat çeken..."
-   • "{rating} üzerinden değerlendirilen..."
+1. İLK CÜMLE - Ürünün Rating'inden bahset ve cümlede ürünün adı da geçsin (Başlıkta renk, hafıza gibi bilgi varsa alma sadece ürünün adı)
+    1- {title} {rating} puanıyla öne çıkıyor.
+    2- {rating} puana sahip olan {title}....
+    3- Kullanıcılarda {rating} puan alan {title}...
+    4- {title} kullanıcılardan {rating} puan almış
+    İçinden rastgele bi sayı oluştur ve bu cümlelerden birini seçerek kendine göre cümleyi yaz.
 
 2. YORUMLARDAN ÇIKARIM YAP - Direkt alıntı yapma:
    ✅ "Kullanıcılar ses kalitesinden övgüyle bahsediyor"
@@ -105,7 +100,7 @@ Bu ürün hakkında doğal ve bilgilendirici açıklama yaz.
    • Öne çıkan teknik özellikler
    • Kullanım alanları
    • Kalite unsurları
-   • Olmayan özellikler hakkında yorum katmadan bilgi ver
+   • Olmayan özellikler hakkında da bilgi ver FAKAT "ANCAK...YOK" gibi negatif yorumlar katma sadece bilgi ver.
 
 4. YASAK:
    • Fiyat belirtme
