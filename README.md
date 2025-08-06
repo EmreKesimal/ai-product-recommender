@@ -8,7 +8,6 @@ It recommends **real products** based on user preferences, budget, and reviews �
 
 ## ✨ Features
 
-- 🎛️ Dynamic filter panel for product attributes
 - 💬 AI chat interface for personalized recommendations
 - 🌐 **Real product links** (not mock data!)
 - 🧠 LLM-generated summaries from real user reviews
