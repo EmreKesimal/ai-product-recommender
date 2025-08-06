@@ -102,6 +102,13 @@ const ProductRecommender = () => {
                     ))}
                 </div>
             )}
+            {!loading && products.length === 0 && query && (
+                <div className={styles.noResults}>
+                    <p>Aradığınız kriterlere göre bir ürün veritabanında bulunmamaktadır.</p>
+                    <p className={styles.warning}>Mevcut Ürünler: Tablet, telefon, akıllı saat, bilgisayar, vantilatör, süpürge, kulaklık</p>
+                </div>
+            )}
+
         </section>
     );
 };
